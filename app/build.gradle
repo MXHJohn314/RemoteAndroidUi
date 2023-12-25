@@ -1,0 +1,72 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.myapplication'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    sourceSets {
+        androidTest.java.srcDirs += 'src/androidTest/java/receiver' // Assuming your tests are in this directory
+//        androidTest.resources.srcDirs += 'src/androidTest/res' // Include resources if needed
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    packagingOptions {
+        pickFirsts += [
+                "META-INF/INDEX.LIST",
+                "META-INF/io.netty.versions.properties"
+        ]
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    // https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
+    implementation("androidx.test.uiautomator:uiautomator:2.2.0")
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-script-runtime
+    implementation("org.jetbrains.kotlin:kotlin-script-runtime:1.9.22")
+    // https://mvnrepository.com/artifact/androidx.test/monitor
+    implementation("androidx.test:monitor:1.6.1")
+    implementation 'androidx.test.ext:junit:1.1.5'
+    implementation 'androidx.test.espresso:espresso-core:3.5.1'
+// https://mvnrepository.com/artifact/io.ktor/ktor-server-netty
+    androidTestImplementation("io.ktor:ktor-server-netty:2.3.7")
+    androidTestImplementation("io.ktor:ktor-server-core:2.3.7")
+    androidTestImplementation("io.ktor:ktor-server-call-logging:2.3.7")
+    androidTestImplementation("io.ktor:ktor-server-default-headers:2.3.7")
+}
