@@ -56,7 +56,6 @@ class UiDeviceAutomation {
         const val TAG = "UiDeviceAutomation"
     }
     val uiObjects: Map<String, UiObject2>? = mapOf()
-
 }
 
 class ARTestIoTAndroidAutomation {
@@ -191,7 +190,7 @@ class ARTestIoTAndroidAutomation {
     @Test
     fun serveForever() {
         printHelp()
-        Blah(server).start()
+        AndroidCommandSever(server).start()
     }
 
     /**

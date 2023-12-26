@@ -3,7 +3,7 @@ package com.example.myapplication
 //import MessageSenderService
 import io.ktor.server.netty.NettyApplicationEngine
 
-class Blah(
+class AndroidCommandSever(
     private val engine: NettyApplicationEngine,
 //    private val messenger: MessageSenderService,
 ) {
