@@ -1,3 +1,5 @@
+package com.example.myapplication
+
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
@@ -11,9 +13,9 @@ import java.net.URL
 
 /**
  * Take incoming messages from MQTT and forward them to the InstrumentedTestServer by sending
- * a web request to http://localhost:8080
+ * a web request to http://localhost:<5000-5099> (The range common for user-defined apps).
  */
-class MessageSenderService(val topic: String) : Service() {
+class MessageSenderService(val topic: String, val port: Int = 5040) : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         return START_STICKY
     }
@@ -26,9 +28,9 @@ class MessageSenderService(val topic: String) : Service() {
     /**
      * Forward an incoming message from MQTT, and return the response.
      */
-    fun sendMessage(stepMessage: String): String {
-        Log.d("topic=", topic)
-        val url = URL("http://localhost:8080/$topic/$stepMessage")
+    fun sendMessage(message: String): String {
+        Log.d("topic=", "About to send another message for topic '$topic'.")
+        val url = URL("http://localhost:$port/$topic/$message")
         try {
             var payload = ""
             val connection = url.openConnection() as HttpURLConnection

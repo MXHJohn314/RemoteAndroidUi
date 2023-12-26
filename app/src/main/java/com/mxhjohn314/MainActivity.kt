@@ -1,10 +1,9 @@
-package com.example.myapplication
+package com.mxhjohn314
 
-import MessageSenderService
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.MessageSenderService
 
 
 // Replace with your package name

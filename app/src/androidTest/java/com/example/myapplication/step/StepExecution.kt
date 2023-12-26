@@ -39,9 +39,19 @@ abstract class StepExecution : (String, Array<out Any?>) -> Any {
         return validate()
     }
 
-    abstract fun precondition()
-    abstract fun execute()
-    abstract fun validate(): StepExecutionResult
+    open fun precondition() {
+
+    }
+    open fun execute() {
+
+    }
+    open fun validate(): StepExecutionResult {
+        return StepExecutionResult(statusCode, "$payload",
+            // Tack on the exception if things went badly.
+            if (isSevere) RemoteExecutionException(errorString)
+            else null
+        )
+    }
     fun triage(
         errorString: String, statusCode: HttpStatusCode, isSevere: Boolean,
         vararg evidence: Any

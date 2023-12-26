@@ -18,4 +18,16 @@ class Hierarchy {
             )
         }
     }
+    class StatusBar {
+        companion object {
+            val MINIMIZED_BAR = UiNode(
+                "com.probably.a.different.company/status_bar_minimized",
+                "The status bar is not loaded. You may need to reset your device.",
+                "Swipe down on the status bar, Wait one second, then swipe again to reveal the settings," +
+                " find it, and click it. wait for settings to load. swipe scroll to System." +
+                "ClickAbout tablet. Click Model & hardware. Save the serial number as" +
+                " this.serialNumber. Kill the settings view."
+            )
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import com.example.myapplication.step.login.LoginStep
+import com.example.myapplication.step.startworkflow.StartWorkflow
 import io.netty.handler.codec.http.HttpMethod
 
 /**
@@ -12,6 +13,7 @@ enum class UiServerOperation(
     val path: String,
     val lambda: (String, Array<out Any?>) -> Any,
 ) {
+    START_WORKFLOW(HttpMethod.POST, "/start-workflow", StartWorkflow()),
     LOGIN(HttpMethod.PUT, "/login", LoginStep()),
     ;
 }

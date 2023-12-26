@@ -44,6 +44,11 @@ class InstrumentedTestServer
         const val TAG = "InstrumentedTestServer"
         private val gson = Gson()
     }
+    init {
+        val c = Class.forName("android.os.SystemProperties")
+        val get = c.getMethod("get", String::class.java)
+        Log.d(TAG, "this device's serialNumber is: '${get.invoke(c, " sys . serialnumber ", " unknown ") as String}'")
+    }
 
     /**
      * This server setup allows us to get messages from the mqtt receiver, as well as applications
@@ -59,6 +64,7 @@ class InstrumentedTestServer
          */
         routing {
             post(UiServerOperation.LOGIN.path) { execute(UiServerOperation.LOGIN) }
+            post(UiServerOperation.START_WORKFLOW.path) { execute(UiServerOperation.START_WORKFLOW) }
         }
     }
 
